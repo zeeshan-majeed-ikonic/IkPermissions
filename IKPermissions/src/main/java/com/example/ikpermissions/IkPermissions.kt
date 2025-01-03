@@ -22,9 +22,10 @@ object IkPermissions {
     fun checkIkPermission(
         context: Context,
         permission: String,
+        options: IkPermissionSettings?=null,
         ikCallback: IkPermissionsCallback
     ) {
-        checkIkPermissions(context, listOf(permission), null, ikCallback)
+        checkIkPermissions(context, listOf(permission), options, ikCallback)
     }
 
 

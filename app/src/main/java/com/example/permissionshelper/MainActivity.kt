@@ -64,9 +64,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.btnSingle).setOnClickListener {
+            val ikSettings = IkPermissions.IkPermissionSettings()
+                .setSettingsDialogMessage("Here is detailed message for user why to give permission..")
+                .setSettingsDialogTitle("Required Permission(s)!")
             IkPermissions.checkIkPermission(
                 this,
                 permission = Manifest.permission.POST_NOTIFICATIONS,
+                options = ikSettings,
                 object : IkPermissionsCallback() {
                     @SuppressLint("SetTextI18n")
                     override fun onGranted() {

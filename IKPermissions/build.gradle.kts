@@ -50,13 +50,13 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.zeeshan-majeed-ikonic"
                 artifactId = "IkPermissions"
-                version = "1.0.1"
+                version = "1.0.2"
             }
             create<MavenPublication>("debug") {
                 from(components["debug"])
                 groupId = "com.github.zeeshan-majeed-ikonic"
                 artifactId = "IkPermissions"
-                version = "1.0.1"
+                version = "1.0.2"
             }
         }
     }
