@@ -12,6 +12,6 @@
     </style>
 
     <style name="RoundedBottomSheet" parent="Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@drawable/bottom_sheet_bg</item>
+        <item name="android:background">@drawable/ik_bottom_sheet_bg</item>
     </style>
 </resources>
