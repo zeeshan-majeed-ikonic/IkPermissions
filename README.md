@@ -65,24 +65,22 @@ Version: [![](https://jitpack.io/v/zeeshan-majeed-ikonic/IkPermissions.svg)](htt
             val ikSettings = IkPermissions.IkPermissionSettings()
                 .setSettingsDialogMessage("Here is detailed message for user why to give permission..")
                 .setSettingsDialogTitle("Required Permission(s)!")
+		.setSettingsButtonBg(R.drawable.btn_bg_custom)
             IkPermissions.checkIkPermissions(
                 context = this,
                 listOfPermissions,
                 options = ikSettings/null,
                 ikCallback = object :
                     IkPermissionsCallback() {
-                    @SuppressLint("SetTextI18n")
                     override fun onGranted() {
                         findViewById<Button>(R.id.btnMulti).text = "All permissions are Granted"
                     }
 
-                    @SuppressLint("SetTextI18n")
                     override fun onDenied(context: Context, permissions: List<String>) {
                         super.onDenied(context, permissions)
                         findViewById<Button>(R.id.btnMulti).text = "${permissions.size} Denied"
                     }
 
-                    @SuppressLint("SetTextI18n")
                     override fun onBlocked(
                         context: Context,
                         permissions: List<String>,
@@ -104,23 +102,21 @@ Version: [![](https://jitpack.io/v/zeeshan-majeed-ikonic/IkPermissions.svg)](htt
             val ikSettings = IkPermissions.IkPermissionSettings()
                 .setSettingsDialogMessage("Here is detailed message for user why to give permission..")
                 .setSettingsDialogTitle("Required Permission!")
+		.setSettingsButtonBg(R.drawable.btn_bg_custom)
             IkPermissions.checkIkPermission(
                 this,
                 permission = Manifest.permission.POST_NOTIFICATIONS,
                 options = ikSettings/null,
                 object : IkPermissionsCallback() {
-                    @SuppressLint("SetTextI18n")
                     override fun onGranted() {
                         findViewById<Button>(R.id.btnSingle).text = "Permission Granted"
                     }
 
-                    @SuppressLint("SetTextI18n")
                     override fun onDenied(context: Context, permissions: List<String>) {
                         super.onDenied(context, permissions)
                         findViewById<Button>(R.id.btnSingle).text = "Permission Denied"
                     }
 
-                    @SuppressLint("SetTextI18n")
                     override fun onBlocked(
                         context: Context,
                         permissions: List<String>,
