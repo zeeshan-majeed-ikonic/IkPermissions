@@ -1,7 +1,5 @@
 package com.example.ikpermissions
 
-import android.app.Activity
-import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -9,7 +7,6 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
-import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -113,7 +110,7 @@ class IkPermissionsActivity : AppCompatActivity() {
     private fun showRationaleDialog() {
         val rationale = intent.getStringExtra(RATIONALE_DATA)
         if (!rationale.isNullOrEmpty()) {
-            val bottomSheet = BottomSheetDialog(this)
+            val bottomSheet = BottomSheetDialog(this, R.style.RoundedBottomSheetTheme)
             bottomSheet.apply {
                 val bottomSheetView = LayoutInflater.from(this@IkPermissionsActivity)
                     .inflate(R.layout.bottom_sheet_blocked_permissions, null)
@@ -128,6 +125,9 @@ class IkPermissionsActivity : AppCompatActivity() {
 
                     heading.text = ikPermissionsSettings?.rationaleDialogTitle
                     description.text = ikPermissionsSettings?.settingsDialogMessage
+                    gotoSettings.setBackgroundResource(ikPermissionsSettings?.settingsButtonBg?:R.drawable.ik_button_bg)
+                    heading.setTextColor(ikPermissionsSettings?.titleColor ?: R.color.black)
+                    description.setTextColor(ikPermissionsSettings?.descColor ?: R.color.gray)
                     btnClose.setOnClickListener {
                         permissionHandler?.onDenied(this@IkPermissionsActivity, deniedPermissions)
                         finish()
@@ -150,7 +150,7 @@ class IkPermissionsActivity : AppCompatActivity() {
 
     private fun showBlockedDialog() {
         if (ikPermissionsSettings?.sendToSettings == true) {
-            val bottomSheet = BottomSheetDialog(this)
+            val bottomSheet = BottomSheetDialog(this, R.style.RoundedBottomSheetTheme)
             bottomSheet.apply {
                 val bottomSheetView = LayoutInflater.from(this@IkPermissionsActivity)
                     .inflate(R.layout.bottom_sheet_blocked_permissions, null)
@@ -165,6 +165,9 @@ class IkPermissionsActivity : AppCompatActivity() {
 
                     heading.text = ikPermissionsSettings?.settingsDialogTitle
                     description.text = ikPermissionsSettings?.settingsDialogMessage
+                    gotoSettings.setBackgroundResource(ikPermissionsSettings?.settingsButtonBg?:R.drawable.ik_button_bg)
+                    heading.setTextColor(ikPermissionsSettings?.titleColor ?: R.color.black)
+                    description.setTextColor(ikPermissionsSettings?.descColor ?: R.color.gray)
                     btnClose.setOnClickListener {
                         permissionHandler?.onBlocked(
                             this@IkPermissionsActivity,

@@ -22,7 +22,7 @@ object IkPermissions {
     fun checkIkPermission(
         context: Context,
         permission: String,
-        options: IkPermissionSettings?=null,
+        options: IkPermissionSettings? = null,
         ikCallback: IkPermissionsCallback
     ) {
         checkIkPermissions(context, listOf(permission), options, ikCallback)
@@ -32,7 +32,7 @@ object IkPermissions {
     fun checkIkPermissions(
         context: Context,
         permissions: List<String>,
-        options: IkPermissionSettings?=null,
+        options: IkPermissionSettings? = null,
         ikCallback: IkPermissionsCallback
     ) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -73,6 +73,7 @@ object IkPermissions {
             "App need permission(s) to use this feature. Please goto settings and allow required permission. This will allow you to use this App seamlessly."
         var sendToSettings: Boolean = true
         var createNewTask: Boolean = false
+        var settingsButtonBg: Int = R.drawable.ik_button_bg
 
         fun setNavSettingBtnText(text: String): IkPermissionSettings {
             navSettingBtnText = text
@@ -101,6 +102,11 @@ object IkPermissions {
 
         fun sendForSettings(canSend: Boolean): IkPermissionSettings {
             sendToSettings = canSend
+            return this
+        }
+
+        fun setSettingsButtonBg(resourceId:Int):IkPermissionSettings{
+            settingsButtonBg = resourceId
             return this
         }
     }

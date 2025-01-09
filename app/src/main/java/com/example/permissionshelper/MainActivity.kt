@@ -16,6 +16,7 @@ import com.example.ikpermissions.IkPermissionsCallback
 
 class MainActivity : AppCompatActivity() {
 
+//    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
             val ikSettings = IkPermissions.IkPermissionSettings()
                 .setSettingsDialogMessage("Here is detailed message for user why to give permission..")
                 .setSettingsDialogTitle("Required Permission(s)!")
+                .setSettingsButtonBg(R.drawable.btn_bg_custom)
             IkPermissions.checkIkPermissions(
                 context = this,
                 listOfPermissions,
@@ -67,6 +69,7 @@ class MainActivity : AppCompatActivity() {
             val ikSettings = IkPermissions.IkPermissionSettings()
                 .setSettingsDialogMessage("Here is detailed message for user why to give permission..")
                 .setSettingsDialogTitle("Required Permission(s)!")
+                .setSettingsButtonBg(R.drawable.btn_bg_custom)
             IkPermissions.checkIkPermission(
                 this,
                 permission = Manifest.permission.POST_NOTIFICATIONS,
