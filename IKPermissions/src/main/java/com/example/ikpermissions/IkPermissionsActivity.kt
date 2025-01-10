@@ -123,9 +123,25 @@ class IkPermissionsActivity : AppCompatActivity() {
                     val btnClose = findViewById<ImageView>(R.id.btn_close)
                     val gotoSettings = findViewById<TextView>(R.id.btn_done)
 
-                    heading.text = ikPermissionsSettings?.rationaleDialogTitle
+                    heading.text = ikPermissionsSettings?.settingsDialogTitle
                     description.text = ikPermissionsSettings?.settingsDialogMessage
-                    gotoSettings.setBackgroundResource(ikPermissionsSettings?.settingsButtonBg?:R.drawable.ik_button_bg)
+                    gotoSettings.setBackgroundResource(
+                        ikPermissionsSettings?.settingsButtonBg ?: R.drawable.ik_button_bg
+                    )
+
+                    heading.textSize = resources.getDimension(
+                        ikPermissionsSettings?.headingTextSize ?: R.dimen.headingText
+                    )
+                    description.textSize = resources.getDimension(
+                        (ikPermissionsSettings?.descTextSize ?: R.dimen.descText)
+                    )
+
+                    heading.setTextColor(
+                        ContextCompat.getColor(this@IkPermissionsActivity,ikPermissionsSettings?.headingColor?:R.color.black)
+                    )
+                    description.setTextColor(
+                        ContextCompat.getColor(this@IkPermissionsActivity,ikPermissionsSettings?.descColor?:R.color.gray)
+                    )
 
                     btnClose.setOnClickListener {
                         permissionHandler?.onDenied(this@IkPermissionsActivity, deniedPermissions)
@@ -162,9 +178,24 @@ class IkPermissionsActivity : AppCompatActivity() {
                     val btnClose = findViewById<ImageView>(R.id.btn_close)
                     val gotoSettings = findViewById<TextView>(R.id.btn_done)
 
+                    gotoSettings.text = ikPermissionsSettings?.navSettingBtnText ?: "Go to Settings"
                     heading.text = ikPermissionsSettings?.settingsDialogTitle
                     description.text = ikPermissionsSettings?.settingsDialogMessage
-                    gotoSettings.setBackgroundResource(ikPermissionsSettings?.settingsButtonBg?:R.drawable.ik_button_bg)
+                    gotoSettings.setBackgroundResource(
+                        ikPermissionsSettings?.settingsButtonBg ?: R.drawable.ik_button_bg
+                    )
+                    heading.textSize = resources.getDimension(
+                        ikPermissionsSettings?.headingTextSize ?: R.dimen.headingText
+                    )
+                    description.textSize = resources.getDimension(
+                        (ikPermissionsSettings?.descTextSize ?: R.dimen.descText)
+                    )
+                    heading.setTextColor(
+                        ContextCompat.getColor(this@IkPermissionsActivity,ikPermissionsSettings?.headingColor?:R.color.black)
+                    )
+                    description.setTextColor(
+                        ContextCompat.getColor(this@IkPermissionsActivity,ikPermissionsSettings?.descColor?:R.color.gray)
+                    )
 
                     btnClose.setOnClickListener {
                         permissionHandler?.onBlocked(

@@ -7,14 +7,24 @@ import android.os.Build
 import androidx.core.content.ContextCompat
 import java.io.Serializable
 
+/**
+ * @author: Zeeshan Majeed
+ * @since: Dec 2024
+ * */
+
 object IkPermissions {
     var canLog: Boolean = true
 
-
+    /**
+     * to disable logs
+     */
     fun disableLogs() {
         canLog = false
     }
 
+    /**
+     * @param message: this is log to be print
+     */
     internal fun logger(message: String) {
         if (canLog) android.util.Log.d("IkPermissions", message)
     }
@@ -66,14 +76,18 @@ object IkPermissions {
     }
 
     class IkPermissionSettings : Serializable {
-        var navSettingBtnText: String = "Settings"
-        var rationaleDialogTitle: String = "Permission(s) Required"
+        var navSettingBtnText: String = "Go to Settings"
         var settingsDialogTitle: String = "Permission(s) Required"
         var settingsDialogMessage: String =
             "App need permission(s) to use this feature. Please goto settings and allow required permission. This will allow you to use this App seamlessly."
         var sendToSettings: Boolean = true
         var createNewTask: Boolean = false
         var settingsButtonBg: Int = R.drawable.ik_button_bg
+        var headingTextSize: Int = R.dimen.headingText
+        var descTextSize: Int = R.dimen.descText
+        var headingColor: Int = R.color.black
+        var descColor: Int = R.color.gray
+
 
         fun setNavSettingBtnText(text: String): IkPermissionSettings {
             navSettingBtnText = text
@@ -85,10 +99,6 @@ object IkPermissions {
             return this
         }
 
-        fun setRationaleDialogTitle(title: String): IkPermissionSettings {
-            rationaleDialogTitle = title
-            return this
-        }
 
         fun setSettingsDialogTitle(title: String): IkPermissionSettings {
             settingsDialogTitle = title
@@ -105,8 +115,28 @@ object IkPermissions {
             return this
         }
 
-        fun setSettingsButtonBg(resourceId:Int):IkPermissionSettings{
+        fun setSettingsButtonBg(resourceId: Int): IkPermissionSettings {
             settingsButtonBg = resourceId
+            return this
+        }
+
+        fun setHeadingTextSize(size: Int): IkPermissionSettings {
+            headingTextSize = size
+            return this
+        }
+
+        fun setDescTextSize(size: Int): IkPermissionSettings {
+            descTextSize = size
+            return this
+        }
+
+        fun setHeadingColor(colorId: Int): IkPermissionSettings {
+            headingColor = colorId
+            return this
+        }
+
+        fun setDescColor(colorId: Int): IkPermissionSettings {
+            descColor = colorId
             return this
         }
     }

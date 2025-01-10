@@ -36,6 +36,12 @@ class MainActivity : AppCompatActivity() {
                 .setSettingsDialogMessage("Here is detailed message for user why to give permission..")
                 .setSettingsDialogTitle("Required Permission(s)!")
                 .setSettingsButtonBg(R.drawable.btn_bg_custom)
+                .setNavSettingBtnText("Settings")
+                .setHeadingTextSize(R.dimen.headSize)
+                .setDescTextSize(R.dimen.subSize)
+                *//*.setHeadingColor(R.color.blue)
+                .setDescColor(R.color.yellow)*//*
+
             IkPermissions.checkIkPermissions(
                 context = this,
                 listOfPermissions,
@@ -70,6 +76,12 @@ class MainActivity : AppCompatActivity() {
                 .setSettingsDialogMessage("Here is detailed message for user why to give permission..")
                 .setSettingsDialogTitle("Required Permission(s)!")
                 .setSettingsButtonBg(R.drawable.btn_bg_custom)
+                .setNavSettingBtnText("Settings")
+                .setHeadingTextSize(R.dimen.headSize)
+                .setDescTextSize(R.dimen.subSize)
+                *//*.setHeadingColor(R.color.yellow)
+                .setDescColor(R.color.blue)*//*
+
             IkPermissions.checkIkPermission(
                 this,
                 permission = Manifest.permission.POST_NOTIFICATIONS,

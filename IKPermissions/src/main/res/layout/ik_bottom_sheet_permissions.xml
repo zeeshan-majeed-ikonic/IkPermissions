@@ -14,7 +14,7 @@
         android:layout_marginTop="6dp"
         android:text="Permission(s) Required"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="@dimen/headingText"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
         android:gravity="start"
         android:text="App need permission(s) to use this feature. Plase goto settings and allow required permission. This will allow you to use this App seamlessly."
         android:textColor="@color/gray"
-        android:textSize="15dp"
+        android:textSize="@dimen/descText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_free_heading" />
