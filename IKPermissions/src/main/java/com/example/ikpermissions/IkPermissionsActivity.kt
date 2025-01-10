@@ -16,6 +16,11 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.io.Serializable
 
+/**
+ * @author: Zeeshan Majeed
+ * @since: Dec 2024
+ */
+
 class IkPermissionsActivity : AppCompatActivity() {
     companion object {
         const val SETTINGS_CODE = 2023
@@ -107,13 +112,17 @@ class IkPermissionsActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * This bottom sheet dialog will appear to user when user clicks on don't allow
+     */
+
     private fun showRationaleDialog() {
         val rationale = intent.getStringExtra(RATIONALE_DATA)
         if (!rationale.isNullOrEmpty()) {
             val bottomSheet = BottomSheetDialog(this, R.style.RoundedBottomSheetTheme)
             bottomSheet.apply {
                 val bottomSheetView = LayoutInflater.from(this@IkPermissionsActivity)
-                    .inflate(R.layout.ik_bottom_sheet_permissions, null)
+                    .inflate(R.layout.ik_bottom_sheet_permissions,null)
                 setContentView(bottomSheetView)
                 setCancelable(false)
                 show()
@@ -137,10 +146,28 @@ class IkPermissionsActivity : AppCompatActivity() {
                     )
 
                     heading.setTextColor(
-                        ContextCompat.getColor(this@IkPermissionsActivity,ikPermissionsSettings?.headingColor?:R.color.black)
+                        ContextCompat.getColor(
+                            this@IkPermissionsActivity,
+                            ikPermissionsSettings?.headingColor ?: R.color.black
+                        )
                     )
                     description.setTextColor(
-                        ContextCompat.getColor(this@IkPermissionsActivity,ikPermissionsSettings?.descColor?:R.color.gray)
+                        ContextCompat.getColor(
+                            this@IkPermissionsActivity,
+                            ikPermissionsSettings?.descColor ?: R.color.gray
+                        )
+                    )
+                    gotoSettings.setTextColor(
+                        ContextCompat.getColor(
+                            this@IkPermissionsActivity,
+                            ikPermissionsSettings?.settingButtonTextColor ?: android.R.color.white
+                        )
+                    )
+                    gotoSettings.textSize = resources.getDimension(
+                        ikPermissionsSettings?.settingButtonTextSize ?: R.dimen.buttonSize
+                    )
+                    btnClose.setImageResource(
+                        ikPermissionsSettings?.closeButtonRes ?: R.drawable.ik_ic_close
                     )
 
                     btnClose.setOnClickListener {
@@ -163,6 +190,10 @@ class IkPermissionsActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * This bottom sheet dialog will appear to user when user clicks on don't allow
+     * for multiple time and system blocks rationale dialog
+     */
     private fun showBlockedDialog() {
         if (ikPermissionsSettings?.sendToSettings == true) {
             val bottomSheet = BottomSheetDialog(this, R.style.RoundedBottomSheetTheme)
@@ -191,10 +222,28 @@ class IkPermissionsActivity : AppCompatActivity() {
                         (ikPermissionsSettings?.descTextSize ?: R.dimen.descText)
                     )
                     heading.setTextColor(
-                        ContextCompat.getColor(this@IkPermissionsActivity,ikPermissionsSettings?.headingColor?:R.color.black)
+                        ContextCompat.getColor(
+                            this@IkPermissionsActivity,
+                            ikPermissionsSettings?.headingColor ?: R.color.black
+                        )
                     )
                     description.setTextColor(
-                        ContextCompat.getColor(this@IkPermissionsActivity,ikPermissionsSettings?.descColor?:R.color.gray)
+                        ContextCompat.getColor(
+                            this@IkPermissionsActivity,
+                            ikPermissionsSettings?.descColor ?: R.color.gray
+                        )
+                    )
+                    gotoSettings.setTextColor(
+                        ContextCompat.getColor(
+                            this@IkPermissionsActivity,
+                            ikPermissionsSettings?.settingButtonTextColor ?: android.R.color.white
+                        )
+                    )
+                    gotoSettings.textSize = resources.getDimension(
+                        ikPermissionsSettings?.settingButtonTextSize ?: R.dimen.buttonSize
+                    )
+                    btnClose.setImageResource(
+                        ikPermissionsSettings?.closeButtonRes ?: R.drawable.ik_ic_close
                     )
 
                     btnClose.setOnClickListener {

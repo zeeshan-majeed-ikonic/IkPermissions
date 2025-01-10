@@ -10,7 +10,7 @@ import java.io.Serializable
 /**
  * @author: Zeeshan Majeed
  * @since: Dec 2024
- * */
+ */
 
 object IkPermissions {
     var canLog: Boolean = true
@@ -23,11 +23,20 @@ object IkPermissions {
     }
 
     /**
-     * @param message: this is log to be print
+     * @param message: to be print in logcat
      */
     internal fun logger(message: String) {
         if (canLog) android.util.Log.d("IkPermissions", message)
     }
+
+    /**
+     * Call this function to check and ask only single permission
+     * @param context: Context of current activity or fragment
+     * @param permission: Single runtime permission, which you have declared in Manifest
+     * and want to check and ask to grant.
+     * @param options: (Optional), can customise rationale dialog
+     * @param ikCallback: In this register listeners like on grant, on denied or on blocked
+     */
 
     fun checkIkPermission(
         context: Context,
@@ -38,7 +47,14 @@ object IkPermissions {
         checkIkPermissions(context, listOf(permission), options, ikCallback)
     }
 
-
+    /**
+     * Call this function to check and ask list of multiple permissions
+     * @param context: Context of current activity or fragment
+     * @param permissions: this is list of runtime permission, which you have declared in Manifest
+     * and want to check and ask to grant.
+     * @param options: (Optional), can customise rationale dialog
+     * @param ikCallback: In this register listeners like on grant, on denied or on blocked
+     */
     fun checkIkPermissions(
         context: Context,
         permissions: List<String>,
@@ -75,6 +91,13 @@ object IkPermissions {
         }
     }
 
+    /**
+     * Settings for complete rationale dialog
+     * Customize according to your need
+     * Can set heading, desc, settings button text size and color
+     * Can set button background
+     */
+
     class IkPermissionSettings : Serializable {
         var navSettingBtnText: String = "Go to Settings"
         var settingsDialogTitle: String = "Permission(s) Required"
@@ -87,9 +110,14 @@ object IkPermissions {
         var descTextSize: Int = R.dimen.descText
         var headingColor: Int = R.color.black
         var descColor: Int = R.color.gray
+        var settingButtonTextSize: Int = R.dimen.buttonSize
+        var settingButtonTextColor: Int = android.R.color.white
+        var closeButtonRes: Int = R.drawable.ik_ic_close
 
-
-        fun setNavSettingBtnText(text: String): IkPermissionSettings {
+        /**
+         * @param text: set button text on rational dialog
+         */
+        fun setSettingsButtonText(text: String): IkPermissionSettings {
             navSettingBtnText = text
             return this
         }
@@ -99,12 +127,17 @@ object IkPermissions {
             return this
         }
 
-
+        /**
+         * @param title: set heading text on rational dialog
+         */
         fun setSettingsDialogTitle(title: String): IkPermissionSettings {
             settingsDialogTitle = title
             return this
         }
 
+        /**
+         * @param message: set description text on rational dialog
+         */
         fun setSettingsDialogMessage(message: String): IkPermissionSettings {
             settingsDialogMessage = message
             return this
@@ -115,28 +148,67 @@ object IkPermissions {
             return this
         }
 
+        /**
+         * @param resourceId: set resource drawable for settings button background
+         */
         fun setSettingsButtonBg(resourceId: Int): IkPermissionSettings {
             settingsButtonBg = resourceId
             return this
         }
 
-        fun setHeadingTextSize(size: Int): IkPermissionSettings {
-            headingTextSize = size
+        /**
+         * @param dimen: set resource dimen for dialog heading text size
+         */
+        fun setHeadingTextSize(dimen: Int): IkPermissionSettings {
+            headingTextSize = dimen
             return this
         }
 
-        fun setDescTextSize(size: Int): IkPermissionSettings {
-            descTextSize = size
+        /**
+         * @param dimen: set resource dimen for dialog desc text size
+         */
+        fun setDescTextSize(dimen: Int): IkPermissionSettings {
+            descTextSize = dimen
             return this
         }
 
+        /**
+         * @param colorId: set resource color for dialog heading text color
+         */
         fun setHeadingColor(colorId: Int): IkPermissionSettings {
             headingColor = colorId
             return this
         }
 
+        /**
+         * @param colorId: set resource color for dialog desc text color
+         */
         fun setDescColor(colorId: Int): IkPermissionSettings {
             descColor = colorId
+            return this
+        }
+
+        /**
+         * @param dimen: set resource dimen for button text size
+         */
+        fun setSettingsButtonTextSize(dimen: Int): IkPermissionSettings {
+            settingButtonTextSize = dimen
+            return this
+        }
+
+        /**
+         * @param colorId: set resource color for button text color
+         */
+        fun setSettingsButtonTextColor(colorId: Int): IkPermissionSettings {
+            settingButtonTextColor = colorId
+            return this
+        }
+
+        /**
+         * @param resourceId: set drawable resource for close button
+         */
+        fun setCloseButtonResourceId(resourceId: Int): IkPermissionSettings {
+            closeButtonRes = resourceId
             return this
         }
     }

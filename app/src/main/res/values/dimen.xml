@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="headSize">10dp</dimen>
+    <dimen name="headSize">11dp</dimen>
+    <dimen name="btnSize">9dp</dimen>
     <dimen name="subSize">8dp</dimen>
 </resources>

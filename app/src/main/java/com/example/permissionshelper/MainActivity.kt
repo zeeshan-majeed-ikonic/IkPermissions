@@ -27,20 +27,24 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        /*val listOfPermissions = listOf(
+       /* val listOfPermissions = listOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
         )
+
         findViewById<Button>(R.id.btnMulti).setOnClickListener {
             val ikSettings = IkPermissions.IkPermissionSettings()
-                .setSettingsDialogMessage("Here is detailed message for user why to give permission..")
                 .setSettingsDialogTitle("Required Permission(s)!")
+                .setSettingsDialogMessage("Here is detailed message why to give permission(s)..")
+                .setSettingsButtonText("Go to Settings")
                 .setSettingsButtonBg(R.drawable.btn_bg_custom)
-                .setNavSettingBtnText("Settings")
                 .setHeadingTextSize(R.dimen.headSize)
                 .setDescTextSize(R.dimen.subSize)
-                *//*.setHeadingColor(R.color.blue)
-                .setDescColor(R.color.yellow)*//*
+                .setSettingsButtonTextSize(R.dimen.btnSize)
+                .setHeadingColor(R.color.black)
+                .setDescColor(R.color.black)
+                .setSettingsButtonTextColor(R.color.white)
+                .setCloseButtonResourceId(R.drawable.close_btn)
 
             IkPermissions.checkIkPermissions(
                 context = this,
@@ -76,11 +80,11 @@ class MainActivity : AppCompatActivity() {
                 .setSettingsDialogMessage("Here is detailed message for user why to give permission..")
                 .setSettingsDialogTitle("Required Permission(s)!")
                 .setSettingsButtonBg(R.drawable.btn_bg_custom)
-                .setNavSettingBtnText("Settings")
+                .setSettingsButtonText("Settings")
                 .setHeadingTextSize(R.dimen.headSize)
                 .setDescTextSize(R.dimen.subSize)
-                *//*.setHeadingColor(R.color.yellow)
-                .setDescColor(R.color.blue)*//*
+            *//*.setHeadingColor(R.color.yellow)
+            .setDescColor(R.color.blue)*//*
 
             IkPermissions.checkIkPermission(
                 this,
@@ -107,10 +111,7 @@ class MainActivity : AppCompatActivity() {
                         super.onBlocked(context, permissions, deniedPermissions)
                         findViewById<Button>(R.id.btnSingle).text = "Permission Blocked"
                     }
-
                 })
         }*/
     }
-
-
 }
