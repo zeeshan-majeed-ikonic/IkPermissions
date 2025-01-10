@@ -70,7 +70,7 @@ For customization of Rationale/Blocked dialog
                 .setCloseButtonResourceId(R.drawable.close_btn)
 ```
 
-## Ask for Mutli permissions
+## To grant Mutliple permissions at once
 
 ```kotlin 
     val listOfPermissions = listOf(
@@ -105,7 +105,7 @@ For customization of Rationale/Blocked dialog
         }
 ```
 
-## Ask for Single permission
+## To grant Single permissionn at a time
 
 ```kotlin 
     findViewById<Button>(R.id.btnSingle).setOnClickListener {
