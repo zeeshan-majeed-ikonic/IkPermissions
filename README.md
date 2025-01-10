@@ -52,9 +52,25 @@ Version: [![](https://jitpack.io/v/zeeshan-majeed-ikonic/IkPermissions.svg)](htt
 ```
 ### Step 04:
 
-## Ask for Mutli permissions
+For customization of Rationale/Blocked dialog
+#### set IkPermissionSettings(Opeional)
 
-> If you want to set own message and title on Blocked permissions Rationale dialog options as declaired below. or null if used predefined message
+```kotlin 
+    val ikSettings = IkPermissions.IkPermissionSettings()
+                .setSettingsDialogTitle("Required Permission(s)!")
+                .setSettingsDialogMessage("Here is detailed message why to give permission(s)..")
+                .setSettingsButtonText("Go to Settings")
+                .setSettingsButtonBg(R.drawable.btn_bg_custom)
+                .setHeadingTextSize(R.dimen.headSize)
+                .setDescTextSize(R.dimen.subSize)
+                .setSettingsButtonTextSize(R.dimen.btnSize)
+                .setHeadingColor(R.color.black)
+                .setDescColor(R.color.black)
+                .setSettingsButtonTextColor(R.color.white)
+                .setCloseButtonResourceId(R.drawable.close_btn)
+```
+
+## Ask for Mutli permissions
 
 ```kotlin 
     val listOfPermissions = listOf(
@@ -62,10 +78,6 @@ Version: [![](https://jitpack.io/v/zeeshan-majeed-ikonic/IkPermissions.svg)](htt
             Manifest.permission.ACCESS_COARSE_LOCATION
         )
         findViewById<Button>(R.id.btnMulti).setOnClickListener {
-            val ikSettings = IkPermissions.IkPermissionSettings()
-                .setSettingsDialogMessage("Here is detailed message for user why to give permission..")
-                .setSettingsDialogTitle("Required Permission(s)!")
-		.setSettingsButtonBg(R.drawable.btn_bg_custom)
             IkPermissions.checkIkPermissions(
                 context = this,
                 listOfPermissions,
@@ -95,14 +107,8 @@ Version: [![](https://jitpack.io/v/zeeshan-majeed-ikonic/IkPermissions.svg)](htt
 
 ## Ask for Single permission
 
-> If you want to set own message and title on Blocked permissions Rationale dialog options as declaired below. or null if used predefined message
-
 ```kotlin 
     findViewById<Button>(R.id.btnSingle).setOnClickListener {
-            val ikSettings = IkPermissions.IkPermissionSettings()
-                .setSettingsDialogMessage("Here is detailed message for user why to give permission..")
-                .setSettingsDialogTitle("Required Permission!")
-		.setSettingsButtonBg(R.drawable.btn_bg_custom)
             IkPermissions.checkIkPermission(
                 this,
                 permission = Manifest.permission.POST_NOTIFICATIONS,
