@@ -53,7 +53,7 @@ Version: [![](https://jitpack.io/v/zeeshan-majeed-ikonic/IkPermissions.svg)](htt
 ### Step 04:
 
 For customization of Rationale/Blocked dialog
-#### set IkPermissionSettings(Opeional)
+#### set IkPermissionSettings(Optional)
 
 ```kotlin 
     val ikSettings = IkPermissions.IkPermissionSettings()
